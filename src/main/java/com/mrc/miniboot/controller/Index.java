@@ -15,8 +15,6 @@ public class Index {
     public String index(HttpServletRequest req){
         System.out.println(req);
         System.out.println(Arrays.toString(req.getParameterMap().get("code")));
-
-
         return "index page";
     }
 

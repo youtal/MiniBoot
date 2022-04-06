@@ -8,5 +8,4 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class Keeper extends User{
-    private String wareHouseId;
 }
