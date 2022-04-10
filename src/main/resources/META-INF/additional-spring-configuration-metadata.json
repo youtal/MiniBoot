@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "wechat.code2session",
+      "type": "java.lang.String",
+      "description": "Description for wechat.code2session."
+  }
+] }
