@@ -8,6 +8,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MiniBootApplicationTests {
     @Test
     public void tt1(){
-        LoginController l1 = new LoginController();
     }
 }
