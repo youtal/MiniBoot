@@ -4,8 +4,6 @@ spring:
     username: root
     password: 1415926
     driverClassName: com.mysql.cj.jdbc.Driver
-
-wechat:
-  code2session: "https://api.weixin.qq.com/sns/jscode2session?appid={appid}&secret={secret}&js_code={code}&grant_type=authorization_code"
-  appid: 'wx9b07bbb9b447e524'
-  secret: '17d5490f5eb45ba77e840a2a44b52c0b'
+  jpa:
+    hibernate:
+      ddl-auto: update

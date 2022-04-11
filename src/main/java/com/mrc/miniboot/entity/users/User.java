@@ -1,39 +1,54 @@
 package com.mrc.miniboot.entity.users;
 
-import com.mrc.miniboot.mapper.UserMapper;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Component
 @Data
+@Entity
+@Table(name = "users")
 @Accessors(chain = true)
 public class User {
+    //微信用户唯一标识
+    @Column(name = "openId",nullable = false)
+    @Id
     private String openId;
-    private Date lastLogIn;
-    private String character;
-    private String name;
-    private String wareHouseId;
 
-    @Resource
-    UserMapper mapper;
+    //登录次数
+    @Column(name = "loginCount",nullable = false)
+    private Integer loginCount;
 
-    public User getUserById(String id){
-        return mapper.getUserByOpenId(id);
-    }
+    //注册时间
+    @Column(name = "registerTime",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP",insertable = false,updatable = false)
+    @Generated(GenerationTime.INSERT)
+    private Timestamp registerTime;
 
-    public boolean hasUser(String id){
-        return mapper.hasOpenId(id) > 0;
-    }
+    //上次登录时间
+    @Column(name = "lastLoginTime",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",insertable = false,updatable = false)
+    @Generated(GenerationTime.INSERT)
+    @LastModifiedDate
+    private Timestamp lastLoginTime;
 
-    public void insertUser(){
-        mapper.insertUser(this);
-    }
+    //用户名
+    @Column(name = "userName")
+    private String userName;
 
-    public void updateUser(){
-        mapper.updateUser(this);
-    }
+
+    //用户昵称
+    @Column(name = "nickName")
+    private String nickName;
+
+
+    //角色
+    @Column(name = "role")
+    private String role;
+
 }
