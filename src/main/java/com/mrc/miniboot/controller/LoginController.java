@@ -13,7 +13,6 @@ public class LoginController {
     @Resource
     UserRepository userRepository;
 
-
     @GetMapping("login")
     public String codeLogin(String openId,String project) {
         System.out.println(openId);
@@ -33,6 +32,10 @@ public class LoginController {
     @GetMapping("signup")
     public Integer Signup(String openId,String nickName,String userName,String role) {
 
+        System.out.println(openId);
+        System.out.println(nickName);
+        System.out.println(userName);
+        System.out.println(role);
         String[] roles = {"admin", "keeper", "guest", "buyer", "inspector"};
         if(!Arrays.asList(roles).contains(role))
             return 100001;
